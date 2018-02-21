@@ -1,5 +1,5 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
 let config = {
   entry: [
@@ -9,7 +9,7 @@ let config = {
   ],
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'target'),
     libraryTarget: 'var',
     library: 'EntryPoint'
   },
@@ -18,21 +18,21 @@ let config = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: 'babel-loader'
       }
     ]
   },
   plugins: [
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, './dist'),
+    contentBase: path.resolve(__dirname, './target'),
     historyApiFallback: true,
     inline: true,
     open: true
   }
 }
 
-module.exports = config;
+module.exports = config
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.plugins.push(

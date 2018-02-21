@@ -18,9 +18,20 @@
 
     <div class="white z-depth-4">
       <div class="col s12">
+        <div class="row" style="padding-top:25px;padding-bottom:25px">
+          <div class="col s10 offset-s1 blue-grey-text darken-3">
+            Silahkan download file berikut: <br />
+            <a class="waves-effect waves-light btn" href="./template.xls" style="margin-top:5px"><i class="material-icons left">file_download</i>Download Template</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="white z-depth-4">
+      <div class="col s12">
         <div class="row" style="padding-top:25px">
           <div class="input-field col s10 offset-s1">
-            <input type="text" class="datepicker" name="final_date" id="final_date" required>
+            <input type="text" class="datepicker" name="final_date" id="final_date">
             <label for="final_date">Tanggal Pengembalian Terakhir</label>
           </div>	
         </div>
@@ -28,10 +39,10 @@
           <div class="file-field input-field col s10 offset-s1">
             <div class="btn">
               <span>Upload </span>
-              <input type="file" name="csv_data" id="csv" required>	
+              <input type="file" name="csv_data" id="csv">	
             </div>
             <div class="file-path-wrapper">
-              <input type="text" class="file-path validate" placeholder="Upload file csv sesuai dengan template"> 
+              <input type="text" id="path" class="file-path validate" placeholder="Upload file csv sesuai dengan template"> 
             </div>
           </div>	
         </div>
@@ -50,13 +61,20 @@
         let finalDate = document.getElementById('final_date').value
         let csvData = document.getElementById('csv').files[0]
 
-        //if (!!finalDate && !!csvData) {
-          EntryPoint.handleData(finalDate, csvData)
-        /*} else if (!finalDate) {
+        if (!!finalDate && !!csvData) {
+          if (EntryPoint.checkExtension(csvData)) {
+            EntryPoint.handleData(finalDate, csvData)
+            document.getElementById('final_date').value = ""
+            document.getElementById('csv').value = ""
+            document.getElementById('path').value = ""
+          } else {
+            alert('Please input csv with correct template')
+          }
+        } else if (!finalDate) {
           alert('Please input date')
         } else {
           alert('Plese input csv')
-        }*/
+        }
       }
     </script>
   </body>

@@ -5,8 +5,18 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server -d --hot --config webpack.config.js --watch",
-    "production": "NODE_ENV=production webpack"
+    "development": "webpack-dev-server -d --hot --config webpack.config.js --watch",
+    "production": "NODE_ENV=production webpack",
+    "dist": "electron-builder --win",
+    "lint": "eslint --ignore-path .gitignore dist target ."
+  },
+  "build": {
+    "appId": "com.cingkleung.sewatam",
+    "productName": "Sewa Tam",
+    "copyright": "Copyright 2018 Mat",
+    "win": {
+      "target": "portable"
+    }
   },
   "keywords": [],
   "author": "",
@@ -16,6 +26,13 @@
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "electron-builder": "^19.55.2",
+    "electron-packager": "^10.1.2",
+    "eslint": "^4.18.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
     "uglifyjs-webpack-plugin": "^1.1.6",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"

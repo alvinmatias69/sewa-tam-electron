@@ -3,5 +3,3 @@ const dateConfig = {
   format: 'yyyy-mm-dd'
 }
 const instance = M.Datepicker.init(elem, dateConfig)
-
-
