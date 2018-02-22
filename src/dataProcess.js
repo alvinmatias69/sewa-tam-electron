@@ -86,7 +86,7 @@ export let calculateNotRetreived = (finalDate, data) => {
   let index = 0
   for (let name in data) {
     for (index = 0; index < data[name].length; index++) {
-      if (data[name][index].qty) {
+      if (!!data[name][index].qty) {
         result.push({
           kode: data[name][index].code,
           nama: name,
@@ -94,7 +94,7 @@ export let calculateNotRetreived = (finalDate, data) => {
           sj_kembali: '',
           tgl_kirim: processDate(data[name][index].date),
           tgl_kembali: processDate(finalDate),
-          durasi: calculateDuration(data.masuk[name][index].date, finalDate),
+          durasi: calculateDuration(data[name][index].date, finalDate),
           quantity: data[name][index].qty,
           quantity_rusak: '',
           quantity_hilang: ''

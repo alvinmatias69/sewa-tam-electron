@@ -17,7 +17,7 @@ let download = (filename, text) => {
 
 let onComplete = (results, date) => {
   let data = processData(results)
-  let result = calculateData(data).concat(calculateNotRetreived(date, data))
+  let result = calculateData(data).concat(calculateNotRetreived(new Date(date), data.kirim))
   download('result.csv', Papa.unparse(result.sort(sortResult), { quotes: true }))
 }
 
